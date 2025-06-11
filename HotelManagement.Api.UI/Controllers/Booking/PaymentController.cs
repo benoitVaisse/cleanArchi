@@ -26,13 +26,14 @@ public class PaymentController : HotelManagementControllerBase
         return Ok();
     }
 
-    //[HttpPatch("{bookingId:Guid}/paypal")]
-    //public async Task<IActionResult> PaymentByPaypal(
-    //    Guid bookingId,
-    //    [FromBody] Payment payment,
-    //    [FromServices] IPaymentPaypalUseCase paymentPaypalUseCase
-    //    )
-    //{
-
-    //}
+    [HttpPatch("{bookingId:Guid}/paypal")]
+    public async Task<IActionResult> PaymentByPaypal(
+        Guid bookingId,
+        [FromBody] Payment payment,
+        [FromServices] IPaymentPaypalUseCase paymentPaypalUseCase
+        )
+    {
+        PaymentResult result = await paymentPaypalUseCase.Handle(bookingId, payment);
+        return Ok();
+    }
 }

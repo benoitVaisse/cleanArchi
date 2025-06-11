@@ -1,4 +1,5 @@
 ﻿using HotelManagement.Domain.Auth;
+using HotelManagement.Domain.Exceptions;
 using HotelManagement.Domain.Users;
 using HotelManagement.Infrastructure.Data.Users;
 
@@ -10,7 +11,7 @@ public class AuthRepository : Context<User>, IAuthRepository
     public async Task<User?> AuthUser(string email, string password)
     {
         List<User> users = await GetDataJsonFile(path);
-        User user = users.Where(u => u.EmailAddress == email).FirstOrDefault() ?? throw new Exception("Email or password invalid");
+        User user = users.Where(u => u.EmailAddress == email).FirstOrDefault() ?? throw new BadRequestException("Email or password invalid");
         if (PasswordHash.Instance.VerifyUserHash(user, user.HashedPassword, password))
             return user;
 

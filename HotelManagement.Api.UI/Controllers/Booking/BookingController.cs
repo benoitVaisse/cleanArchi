@@ -50,4 +50,26 @@ public class BookingController : HotelManagementControllerBase
         return Ok(message);
     }
 
+    [Authorize(Roles = "Receptionist")]
+    [HttpPatch("{id:Guid}/arrived")]
+    public async Task<IActionResult> Arrived(
+        Guid bookindId,
+        [FromServices] ICustomerArrived customerArrived
+    )
+    {
+        await customerArrived.Handle(bookindId);
+        return Ok();
+    }
+
+    [Authorize(Roles = "Receptionist")]
+    [HttpPatch("{id:Guid}/leave")]
+    public async Task<IActionResult> Leave(
+        Guid bookindId,
+        [FromServices] ICustomerLeaved customerLeaved
+    )
+    {
+        await customerLeaved.Handle(bookindId);
+        return Ok();
+    }
+
 }

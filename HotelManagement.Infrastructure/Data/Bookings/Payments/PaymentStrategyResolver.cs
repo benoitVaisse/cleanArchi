@@ -1,4 +1,5 @@
 ﻿using HotelManagement.Domain.Bookings.Payment;
+using HotelManagement.Domain.Exceptions;
 
 namespace HotelManagement.Infrastructure.Data.Bookings.Payments;
 
@@ -16,6 +17,6 @@ public class PaymentStrategyResolver : IPaymentStrategyResolver
         if (_strategies.TryGetValue(method, out var strategy))
             return strategy;
 
-        throw new NotSupportedException($"Payment method '{method}' is not supported.");
+        throw new BadRequestException($"Payment method '{method}' is not supported.");
     }
 }

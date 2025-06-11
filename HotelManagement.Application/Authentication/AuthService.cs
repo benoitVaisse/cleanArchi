@@ -1,5 +1,6 @@
 ﻿
 using HotelManagement.Domain.Auth;
+using HotelManagement.Domain.Exceptions;
 using HotelManagement.Domain.Users;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -16,7 +17,7 @@ public class AuthService(
     public async Task<AuthenticationResponseDto> Authenticate(AuthenticationDto authenticationDto)
     {
         User? user = await authRepository.AuthUser(authenticationDto.Email, authenticationDto.Password)
-            ?? throw new Exception("Email or password invalid");
+            ?? throw new BadRequestException("Email or password invalid");
 
         AuthenticationResponseDto authenticationResponseDto = new()
         {

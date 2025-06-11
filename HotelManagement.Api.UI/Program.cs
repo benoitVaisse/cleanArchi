@@ -33,6 +33,8 @@ builder.Services.AddScoped<ICreateUser, CreateUser>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPurchaseManager, PurchaseManager>();
 builder.Services.AddScoped<IPaymentSripeUseCase, PaymentSripeUseCase>();
+builder.Services.AddScoped<ICancelBooking, CancelBooking>();
+builder.Services.AddScoped<IPaymentPaypalUseCase, PaymentPaypalUseCase>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 builder.Services.AddScoped<IGetRoomsToClean, GetRoomsToClean>();
@@ -100,6 +102,7 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
+app.UseExceptionHandler("/api/v1/error");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

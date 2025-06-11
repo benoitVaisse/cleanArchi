@@ -1,5 +1,6 @@
 ﻿using HotelManagement.Application.Bookings.Dtos;
 using HotelManagement.Domain.Bookings;
+using HotelManagement.Domain.Exceptions;
 
 namespace HotelManagement.Application.Bookings;
 
@@ -10,7 +11,7 @@ public class CreateBooking(
 {
     public async Task<BookingDto> Handle(BookingDto dto)
     {
-        Room? room = await roomRepository.GetAsync(dto.RoomId) ?? throw new NullReferenceException("room doesn't exist");
+        Room? room = await roomRepository.GetAsync(dto.RoomId) ?? throw new NotFoundException("room doesn't exist");
         Booking booking = await bookingRepository.Create(new Booking()
         {
             RoomId = dto.RoomId,

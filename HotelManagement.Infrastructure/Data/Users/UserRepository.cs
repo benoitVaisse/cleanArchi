@@ -13,9 +13,10 @@ namespace HotelManagement.Infrastructure.Data.Users
             return user;
         }
 
-        public Task<User> GetAsync(Guid id)
+        public async Task<User?> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            List<User> users = await GetDataJsonFile(path);
+            return users.Where(u => u.Id == id).FirstOrDefault();
         }
     }
 }

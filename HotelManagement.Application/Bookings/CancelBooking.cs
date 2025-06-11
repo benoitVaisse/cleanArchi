@@ -1,5 +1,6 @@
 ﻿using HotelManagement.Application.Authentication;
 using HotelManagement.Domain.Bookings;
+using HotelManagement.Domain.Exceptions;
 using HotelManagement.Domain.Users;
 
 namespace HotelManagement.Application.Bookings;
@@ -12,10 +13,10 @@ public class CancelBooking(
     public async Task<string> Handle(Guid bookingId, bool refund = true)
     {
         Booking booking = await bookingRepository.GetAsync(bookingId)
-            ?? throw new Exception("booking dosent exist");
+            ?? throw new NotFoundException("booking dosent exist");
 
         if (booking.CustomerId != currentUserTokenAdapter.GetUserId() || currentUserTokenAdapter.GetUserRole() != nameof(RoleType.Receptionist))
-            throw new Exception("error, on cancel booking");
+            throw new BadRequestException("error, on cancel booking. Customer not correct or Contact receptionist for cancel booking");
 
         string message = "Votre annulation a bien été effectuée.";
         booking.IsCancel = true;
