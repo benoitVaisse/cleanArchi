@@ -1,0 +1,53 @@
+﻿using HotelManagement.Application.Authentication;
+using HotelManagement.Application.Bookings;
+using HotelManagement.Application.Bookings.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace HotelManagement.Api.UI.Controllers.Booking;
+
+[ApiController]
+[Route("api/v1/booking")]
+[Authorize(Roles = "Receptionist,Customer")]
+public class BookingController : HotelManagementControllerBase
+{
+    public BookingController()
+    {
+
+    }
+
+
+    /// <summary>
+    /// creake a booking on a specific room
+    /// </summary>
+    /// <param name="roomid"></param>
+    /// <returns></returns>
+    [HttpPost("{roomid:Guid}")]
+    [Authorize(Roles = "Customer")]
+    public async Task<IActionResult> Booking(
+        Guid roomid,
+        [FromBody] BookingDto bookingDto,
+        [FromServices] ICreateBooking createBooking,
+        [FromServices] ICurrentUserTokenAdapter currentUserTokenAdapter
+        )
+    {
+        bookingDto.CustomerId = currentUserTokenAdapter.GetUserId();
+
+        return Ok(await createBooking.Handle(bookingDto));
+    }
+
+    [Authorize(Roles = "Customer,Receptionist")]
+    [HttpPatch("{id:Guid}/cancel")]
+    [HttpPatch("{id:Guid}/cancel/{refund:bool}")]
+    public async Task<IActionResult> CancelBooking(
+            Guid bookindId,
+            bool refund,
+            ICancelBooking cancelBooking,
+            ICurrentUserTokenAdapter currentUserTokenAdapter
+        )
+    {
+        string message = await cancelBooking.Handle(bookindId, refund);
+        return Ok(message);
+    }
+
+}
