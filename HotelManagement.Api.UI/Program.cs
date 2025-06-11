@@ -31,6 +31,7 @@ builder.Services.AddScoped<ICurrentUserTokenAdapter, CurrentUserTokenAdapter>();
 builder.Services.AddScoped<ICreateBooking, CreateBooking>();
 builder.Services.AddScoped<ICreateUser, CreateUser>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPurchaseManager, PurchaseManager>();
 builder.Services.AddScoped<IPaymentSripeUseCase, PaymentSripeUseCase>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IBookingRepository, BookingRepository>();
@@ -38,6 +39,11 @@ builder.Services.AddScoped<IGetRoomsToClean, GetRoomsToClean>();
 builder.Services.AddScoped<IPatchCleanedRoom, PatchCleanedRoom>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IPaymentStripeAdapter, PaymentStripeAdapter>();
+builder.Services.AddScoped<IPaymentStrategyResolver, PaymentStrategyResolver>();
+builder.Services.AddScoped<IPaymentManager, StripePaymentManager>();
+builder.Services.AddScoped<IPaymentManager, PaypalPaymentManager>();
+builder.Services.AddScoped<IPaymentPaypalAdapter, PaymentPaypalAdapter>();
 builder.Services.AddScoped<IPaymentStripeAdapter, PaymentStripeAdapter>();
 
 
