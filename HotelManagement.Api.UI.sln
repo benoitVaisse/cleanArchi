@@ -20,7 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "archi-decision-record", "archi-decision-record", "{70B460AC-55EA-42B3-871D-FFBD41D75269}"
 	ProjectSection(SolutionItems) = preProject
 		ADR\20250611_factoryPattern.md = ADR\20250611_factoryPattern.md
-		20250611_repositoryPattern.md = 20250611_repositoryPattern.md
+		ADR\20250611_repositoryPattern.md = ADR\20250611_repositoryPattern.md
 	EndProjectSection
 EndProject
 Global
