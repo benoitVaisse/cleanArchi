@@ -15,6 +15,13 @@ public class PaymentController : HotelManagementControllerBase
 
     }
 
+    /// <summary>
+    /// pay a booking by stripe
+    /// </summary>
+    /// <param name="bookingId"></param>
+    /// <param name="payment"></param>
+    /// <param name="paymentSripeUseCase"></param>
+    /// <returns></returns>
     [HttpPatch("{bookingId:Guid}/stripe")]
     public async Task<IActionResult> PaymentByStripe(
         Guid bookingId,
@@ -26,6 +33,13 @@ public class PaymentController : HotelManagementControllerBase
         return Ok();
     }
 
+    /// <summary>
+    /// pay booking py paypal
+    /// </summary>
+    /// <param name="bookingId"></param>
+    /// <param name="payment"></param>
+    /// <param name="paymentPaypalUseCase"></param>
+    /// <returns></returns>
     [HttpPatch("{bookingId:Guid}/paypal")]
     public async Task<IActionResult> PaymentByPaypal(
         Guid bookingId,

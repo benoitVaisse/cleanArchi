@@ -13,6 +13,12 @@ public class UserController : HotelManagementControllerBase
 
     }
 
+    /// <summary>
+    /// Create user
+    /// </summary>
+    /// <param name="userModel"></param>
+    /// <param name="createUser"></param>
+    /// <returns></returns>
     [HttpPost]
     [AllowAnonymous]
     public async Task<IActionResult> CreateUser(

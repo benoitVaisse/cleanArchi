@@ -14,11 +14,24 @@ public sealed class PasswordHash
     {
     }
 
+    /// <summary>
+    /// hash password
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="password"></param>
+    /// <returns></returns>
     public string HashPassword(User user, string password)
     {
         return _passwordHasher.HashPassword(user, password);
     }
 
+    /// <summary>
+    /// verify user for login
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="passwordHash"></param>
+    /// <param name="passwword"></param>
+    /// <returns></returns>
     public bool VerifyUserHash(User user, string passwordHash, string passwword)
     {
         var result = _passwordHasher.VerifyHashedPassword(user, passwordHash, passwword);

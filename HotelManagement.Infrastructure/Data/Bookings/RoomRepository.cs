@@ -2,6 +2,9 @@
 
 namespace HotelManagement.Infrastructure.Data.Bookings;
 
+/// <summary>
+/// <inheritdoc cref="IRoomRepository"/>
+/// </summary>
 public class RoomRepository : Context<Room>, IRoomRepository
 {
     private readonly string path = "./../HotelManagement.Domain/Bookings/rooms.json";

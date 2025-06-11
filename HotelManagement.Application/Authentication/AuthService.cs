@@ -9,6 +9,12 @@ using System.Security.Claims;
 using System.Text;
 
 namespace HotelManagement.Application.Authentication;
+
+/// <summary>
+/// <inheritdoc cref="IAuthService">
+/// </summary>
+/// <param name="authRepository"></param>
+/// <param name="options"></param>
 public class AuthService(
     IAuthRepository authRepository,
     IOptions<JwtBearerOption> options

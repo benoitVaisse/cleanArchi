@@ -3,6 +3,10 @@ using HotelManagement.Domain.Bookings;
 
 namespace HotelManagement.Application.Rooms;
 
+/// <summary>
+/// <inheritdoc cref="IGetRoomsToClean"/>
+/// </summary>
+/// <param name="roomRepository"></param>
 public class GetRoomsToClean(
         IRoomRepository roomRepository
     ) : IGetRoomsToClean

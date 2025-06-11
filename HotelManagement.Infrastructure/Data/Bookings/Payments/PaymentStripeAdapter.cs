@@ -2,6 +2,9 @@
 
 namespace HotelManagement.Infrastructure.Data.Bookings.Payments;
 
+/// <summary>
+/// <inheritdoc cref="IPaymentStripeAdapter"/>
+/// </summary>
 public class PaymentStripeAdapter : IPaymentStripeAdapter
 {
     public Task<PaymentResult> ProcessPaymentAsync(Payment payment)

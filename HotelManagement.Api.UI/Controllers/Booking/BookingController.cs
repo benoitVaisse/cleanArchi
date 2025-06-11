@@ -36,6 +36,14 @@ public class BookingController : HotelManagementControllerBase
         return Ok(await createBooking.Handle(bookingDto));
     }
 
+    /// <summary>
+    /// end pint for cancel booking
+    /// </summary>
+    /// <param name="bookindId"></param>
+    /// <param name="refund"></param>
+    /// <param name="cancelBooking"></param>
+    /// <param name="currentUserTokenAdapter"></param>
+    /// <returns></returns>
     [Authorize(Roles = "Customer,Receptionist")]
     [HttpPatch("{id:Guid}/cancel")]
     [HttpPatch("{id:Guid}/cancel/{refund:bool}")]
@@ -50,6 +58,12 @@ public class BookingController : HotelManagementControllerBase
         return Ok(message);
     }
 
+    /// <summary>
+    /// Manage arrived customer
+    /// </summary>
+    /// <param name="bookindId"></param>
+    /// <param name="customerArrived"></param>
+    /// <returns></returns>
     [Authorize(Roles = "Receptionist")]
     [HttpPatch("{id:Guid}/arrived")]
     public async Task<IActionResult> Arrived(
@@ -61,6 +75,12 @@ public class BookingController : HotelManagementControllerBase
         return Ok();
     }
 
+    /// <summary>
+    /// mangage leaver customer
+    /// </summary>
+    /// <param name="bookindId"></param>
+    /// <param name="customerLeaved"></param>
+    /// <returns></returns>
     [Authorize(Roles = "Receptionist")]
     [HttpPatch("{id:Guid}/leave")]
     public async Task<IActionResult> Leave(

@@ -10,6 +10,11 @@ public class AuthticationController(
     ) : ControllerBase
 {
 
+    /// <summary>
+    /// Login 
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
     [HttpPost("login")]
     public async Task<IActionResult> Login(
         [FromBody] AuthenticationDto model

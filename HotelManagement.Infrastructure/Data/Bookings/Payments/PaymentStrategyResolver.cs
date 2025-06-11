@@ -3,6 +3,9 @@ using HotelManagement.Domain.Exceptions;
 
 namespace HotelManagement.Infrastructure.Data.Bookings.Payments;
 
+/// <summary>
+/// Resolve payment strategie for a stragegy pattern
+/// </summary>
 public class PaymentStrategyResolver : IPaymentStrategyResolver
 {
     private readonly Dictionary<string, IPaymentManager> _strategies;

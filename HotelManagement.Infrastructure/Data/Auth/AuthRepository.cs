@@ -5,6 +5,9 @@ using HotelManagement.Infrastructure.Data.Users;
 
 namespace HotelManagement.Infrastructure.Data.Auth;
 
+/// <summary>
+///<inheritdoc cref="IAuthRepository"/>
+/// </summary>
 public class AuthRepository : Context<User>, IAuthRepository
 {
     private readonly string path = "./../HotelManagement.Domain/Users/users.json";

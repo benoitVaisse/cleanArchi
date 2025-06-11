@@ -2,6 +2,9 @@
 
 namespace HotelManagement.Infrastructure.Data.Bookings.Payments;
 
+/// <summary>
+/// <inheritdoc cref="IPaymentPaypalAdapter"/>
+/// </summary>
 public class PaymentPaypalAdapter : IPaymentPaypalAdapter
 {
     public Task<PaymentResult> ProcessPaymentAsync(Payment payment)

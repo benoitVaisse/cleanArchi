@@ -5,6 +5,11 @@ using HotelManagement.Domain.Users;
 
 namespace HotelManagement.Application.Bookings;
 
+/// <summary>
+/// <inheritdoc cref="ICancelBooking"/>
+/// </summary>
+/// <param name="bookingRepository"></param>
+/// <param name="currentUserTokenAdapter"></param>
 public class CancelBooking(
         IBookingRepository bookingRepository,
         ICurrentUserTokenAdapter currentUserTokenAdapter

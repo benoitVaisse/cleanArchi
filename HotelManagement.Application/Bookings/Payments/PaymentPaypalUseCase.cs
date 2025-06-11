@@ -2,6 +2,10 @@
 
 namespace HotelManagement.Application.Bookings.Payments;
 
+/// <summary>
+/// <inheritdoc cref="IPaymentPaypalUseCase"/>
+/// </summary>
+/// <param name="purchaseManager"></param>
 public class PaymentPaypalUseCase(
         IPurchaseManager purchaseManager
     ) : IPaymentPaypalUseCase

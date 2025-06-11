@@ -4,6 +4,11 @@ using HotelManagement.Domain.Exceptions;
 
 namespace HotelManagement.Application.Bookings;
 
+/// <summary>
+/// <inheritdoc cref="ICreateBooking"/>
+/// </summary>
+/// <param name="roomRepository"></param>
+/// <param name="bookingRepository"></param>
 public class CreateBooking(
         IRoomRepository roomRepository,
         IBookingRepository bookingRepository

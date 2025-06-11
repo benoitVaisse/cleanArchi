@@ -24,7 +24,7 @@ public class GetAvailableRooms(
     }
 }
 
-#region Factory
+#region Factory pattern
 public class RoomDataFactory
 {
     public RoomData GetRoomsData(List<Room> users, string roleType)

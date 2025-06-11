@@ -3,6 +3,10 @@ using HotelManagement.Domain.Exceptions;
 
 namespace HotelManagement.Application.Bookings;
 
+/// <summary>
+/// <inheritdoc cref="ICustomerArrived"/>
+/// </summary>
+/// <param name="bookingRepository"></param>
 public class CustomerArrived(
         IBookingRepository bookingRepository
     ) : ICustomerArrived

@@ -2,6 +2,9 @@
 
 namespace HotelManagement.Infrastructure.Data.Users
 {
+    /// <summary>
+    /// <inheritdoc cref="IUserRepository"/>
+    /// </summary>
     public class UserRepository : Context<User>, IUserRepository
     {
         private readonly string path = "./../HotelManagement.Domain/Users/users.json";

@@ -3,6 +3,10 @@ using System.Text.Json;
 
 namespace HotelManagement.Infrastructure.Data
 {
+    /// <summary>
+    /// Abstract class for simulate a context  ( replace context EF core in exemple ) 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class Context<T> where T : IEntity
     {
         private readonly JsonSerializerOptions options = new JsonSerializerOptions

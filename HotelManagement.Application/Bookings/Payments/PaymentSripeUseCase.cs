@@ -2,6 +2,10 @@
 
 namespace HotelManagement.Application.Bookings.Payments;
 
+/// <summary>
+/// <inheritdoc cref="IPaymentSripeUseCase"/>
+/// </summary>
+/// <param name="purchaseManager"></param>
 public class PaymentSripeUseCase(
     IPurchaseManager purchaseManager
     ) : IPaymentSripeUseCase
