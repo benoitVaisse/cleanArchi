@@ -29,6 +29,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IGetAvailableRooms, GetAvailableRooms>();
 builder.Services.AddScoped<ICurrentUserTokenAdapter, CurrentUserTokenAdapter>();
 builder.Services.AddScoped<ICreateBooking, CreateBooking>();
+builder.Services.AddScoped<ICustomerLeaved, CustomerLeaved>();
 builder.Services.AddScoped<ICreateUser, CreateUser>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IPurchaseManager, PurchaseManager>();
@@ -98,6 +99,14 @@ builder.Services.AddAuthentication(options =>
         ValidateActor = false,
         ValidateLifetime = true,
     };
+});
+
+builder.WebHost.UseSentry(options =>
+{
+    options.Dsn = builder.Configuration["Sentry:Dsn"];
+    options.SendDefaultPii = true;
+    options.SampleRate = 1.0f;
+    options.TracesSampleRate = 1.0f;
 });
 
 var app = builder.Build();

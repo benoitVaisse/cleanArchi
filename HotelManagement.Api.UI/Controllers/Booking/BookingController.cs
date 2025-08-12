@@ -31,6 +31,7 @@ public class BookingController : HotelManagementControllerBase
         [FromServices] ICurrentUserTokenAdapter currentUserTokenAdapter
         )
     {
+        SentrySdk.CaptureMessage($"booking test log", SentryLevel.Error);
         bookingDto.CustomerId = currentUserTokenAdapter.GetUserId();
 
         return Ok(await createBooking.Handle(bookingDto));
@@ -92,4 +93,15 @@ public class BookingController : HotelManagementControllerBase
         return Ok();
     }
 
+
+    /// <summary>
+    /// mangage leaver customer
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet("test")]
+    [AllowAnonymous]
+    public async Task<IActionResult> Test()
+    {
+        throw new NotImplementedException();
+    }
 }

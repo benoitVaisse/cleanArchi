@@ -20,6 +20,8 @@ public class AuthticationController(
         [FromBody] AuthenticationDto model
         )
     {
+        SentrySdk.CaptureMessage($"Auth for {model.Email} info", SentryLevel.Info);
+        SentrySdk.CaptureMessage($"Auth for {model.Email} error", SentryLevel.Error);
         var token = await authenticationService.Authenticate(model);
         return Ok(token);
     }
